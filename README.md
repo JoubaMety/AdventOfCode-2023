@@ -1,2 +1,3 @@
 # AdventOfCode-2023
-i like drugs
+![Banner](docs/media/banner.webp)
+<p style="text-align: center"><i>i like drugs</i></p>
