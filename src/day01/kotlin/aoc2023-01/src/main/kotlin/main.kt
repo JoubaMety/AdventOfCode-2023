@@ -1,23 +1,28 @@
 fun main() {
     val input = getResourceAsText("adventofcode.com_2023_day_1_input.txt")!!
-    println(getSumOfRequiredNumbers(input))
+    println(getSumOfCalibrationValues(input))
 }
 
-/*
-    Loads day 1 input from src/main/resources
+/**
+ * Loads input text-file from src/main/resources
  */
 fun getResourceAsText(path: String): String? =
     object {}.javaClass.getResource(path)?.readText()
 
-fun getSumOfRequiredNumbers(input: String): Int {
+/**
+ * Splits String into elements, is put into a List
+ */
+fun convertStringToList(input: String) : List<String> =
+    input.split(regex = "[\r\n]+".toRegex()).toList()
 
-    val inputLines = input.split(regex = "[\r\n]+".toRegex()).toList()
+fun getSumOfCalibrationValues(input: String): Int {
+    val inputList = convertStringToList(input)
     var output = 0
-    inputLines.forEach {
+    inputList.forEach {
         if (it.isNotEmpty()) {
             val numbersFromLine: Array<Int> = arrayOf(
-                findNumberInOneLine(it, true),
-                findNumberInOneLine(it, false)
+                findCalibrationNumbers(it, true),
+                findCalibrationNumbers(it, false)
             )
             output += "${numbersFromLine[0]}${numbersFromLine[1]}".toInt()
         }
@@ -25,40 +30,47 @@ fun getSumOfRequiredNumbers(input: String): Int {
     return output
 }
 
-fun findNumberInOneLine(input: String, first: Boolean): Int {
-    val numberArray = charArrayOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
+/**
+ * Finds calibration values by searching for first & last numerical (0-9),
+ * and then searching for first & last number letters (one-nine).
+ *
+ * If there's only one number, it's both first & last.
+ */
+fun findCalibrationNumbers(input: String, first: Boolean): Int {
+    // ugh...
+    val numericalList = listOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
     val numberLetterList = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
 
     var numberIndex = if (first) input.length else -1
     var output = 0
     if (first) {
-        for (number in numberArray) {
-            val index = input.indexOf(number)
-            if (index < numberIndex && index != -1) {
-                numberIndex = index
+        for (number in numericalList) {
+            val currentIndex = input.indexOf(number)
+            if (currentIndex < numberIndex && currentIndex != -1) {
+                numberIndex = currentIndex
                 output = number.digitToInt()
             }
         }
         for (number in numberLetterList) {
-            val index = input.indexOf(number, ignoreCase = true)
-            if (index < numberIndex && index != -1) {
-                numberIndex = index
-                output = numberArray[numberLetterList.indexOf(number)].digitToInt()
+            val currentIndex = input.indexOf(number, ignoreCase = true)
+            if (currentIndex < numberIndex && currentIndex != -1) {
+                numberIndex = currentIndex
+                output = numericalList[numberLetterList.indexOf(number)].digitToInt()
             }
         }
     } else {
-        for (number in numberArray) {
-            val index = input.lastIndexOf(number)
-            if (index > numberIndex) {
-                numberIndex = index
+        for (number in numericalList) {
+            val currentIndex = input.lastIndexOf(number)
+            if (currentIndex > numberIndex) {
+                numberIndex = currentIndex
                 output = number.digitToInt()
             }
         }
-        for (number in numberLetterList) {
-            val index = input.lastIndexOf(number)
+        for (currentIndex in numberLetterList) {
+            val index = input.lastIndexOf(currentIndex)
             if (index > numberIndex) {
                 numberIndex = index
-                output = numberArray[numberLetterList.indexOf(number)].digitToInt()
+                output = numericalList[numberLetterList.indexOf(currentIndex)].digitToInt()
             }
         }
     }
