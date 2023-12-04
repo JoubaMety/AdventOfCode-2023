@@ -6,9 +6,10 @@
 > 
 > Sorry for an inconvenience if you were interested in some reason.
 
-*a.k.a. newbie trying to do [Advent of Code 2023](https://adventofcode.com/2023/) (in Kotlin) for the first time :P*
+*a.k.a. Kotlin newbie trying to do [Advent of Code 2023](https://adventofcode.com/2023/) for the first time :P*
 
 ## Screenshots
-[![Ugh... (Day 01)](docs/media/day01.webp)](https://github.com/JoubaMety/AdventOfCode-2023/tree/master/src/day01)
-[![Do you see what I see, lmfao... (Day 02)](docs/media/day02.webp)](https://github.com/JoubaMety/AdventOfCode-2023/tree/master/src/day02)
-[![duuuuuude,wtf (Day 03)](docs/media/day03.webp)](https://github.com/JoubaMety/AdventOfCode-2023/tree/master/src/day03)
+[![Ugh... (Day 01)](docs/media/day01.webp)](src/day01)
+[![Do you see what I see, lmfao... (Day 02)](docs/media/day02.webp)](src/day02)
+[![duuuuuude,wtf (Day 03)](docs/media/day03.webp)](src/day03)
+[![and once again, he did cursed (Day 04)](docs/media/day04.webp)](src/day04)
