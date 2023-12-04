@@ -4,7 +4,7 @@
 <img alt="Advent Of Code 2023; JoubaMety" src="/docs/media/banner-light.webp">
 </picture>
 
-> [!WARNING]
+> [!CAUTION]
 > I haven't figured out how to set up compiler for release,
 > so only way to run Kotlin projects is to open them in [JetBrains' IntelliJ Idea](https://www.jetbrains.com/idea/) (Ultimate) and run via that.
 > 
