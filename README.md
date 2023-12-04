@@ -1,4 +1,8 @@
-[![Banner](docs/media/banner.webp)](https://github.com/JoubaMety/AdventOfCode-2023)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/docs/media/banner-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="/docs/media/banner-light.webp">
+<img alt="Advent Of Code 2023; JoubaMety" src="/docs/media/banner-light.webp">
+</picture>
 
 > [!WARNING]
 > I haven't figured out how to set up compiler for release,
